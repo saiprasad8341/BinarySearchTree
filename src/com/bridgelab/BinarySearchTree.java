@@ -1,6 +1,6 @@
 package com.bridgelab;
 
-//UC2 - Ability to create the binary tree shown in the figure
+//UC3 - Ability to search 63 in the Binary Tree
 
 public class BinarySearchTree {
 
@@ -40,6 +40,17 @@ public class BinarySearchTree {
         inOrder(root.right);
     }
 
+    public TreeNode search(TreeNode root, int key){
+        if (root == null || root.data == key){
+            return root;
+        }
+        if (key < root.data){
+            return search(root.left, key);
+        } else {
+            return search(root.right, key);
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to the Binary Search Tree (BST) Problems By Using Java");
 
@@ -49,5 +60,15 @@ public class BinarySearchTree {
         bst.insert(70);
 
         bst.inOrder(bst.root);
+
+        System.out.println();
+        System.out.print("Searching :::::::::: ");
+
+        TreeNode temp = bst.search(bst.root, 63);
+        if (temp == null){
+            System.out.println("No data found...!!!");
+        } else {
+            System.out.println(temp.data);
+        }
     }
 }
